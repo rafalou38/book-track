@@ -23,7 +23,8 @@
 	function loadCovers() {
 		Promise.all(
 			books.map(async (book) => {
-				book.cover = await getCover(book.title);
+				const cover = await getCover(book.title);
+				if (cover) book.cover = cover;
 			})
 		).then(() => {
 			books = books;
@@ -128,8 +129,8 @@
 				</div>
 			{:else}
 				<div class="card card-side bg-base-100 shadow relative mb-4">
-					<figure class="w-48 max-w-[30vw]">
-						<img src={book.cover} alt="" class="" class:hidden={!book.cover} />
+					<figure class="max-w-[30vw]">
+						<img src={book.cover} alt="" class="w-48" class:hidden={!book.cover} />
 					</figure>
 					<div class="card-body">
 						<h2 class="card-title">{book.title || 'Sans nom'}</h2>
