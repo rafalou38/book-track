@@ -129,7 +129,7 @@
 				</div>
 			{:else}
 				<div class="card card-side bg-base-100 shadow relative mb-4">
-					<figure class="max-w-[30vw]">
+					<figure class="max-w-[30vw] overflow-hidden">
 						<img src={book.cover} alt="" class="w-48" class:hidden={!book.cover} />
 					</figure>
 					<div class="card-body">
